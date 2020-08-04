@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/pageDeafult/pageDefault.js';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button/index.js';
+import useForm from '../../../hooks/useForm.js';
+import '../Video/css.css';
+
 
 function CadastroCategoria() {
   const valoresIniciais = {
@@ -10,27 +13,13 @@ function CadastroCategoria() {
     descricao: '',
     cor: '#000000',
   };
+
+  const { handleChange, values, clearForm } = useForm(valoresIniciais);
+
   const [categorias, setCategorias] = useState([]);
-  const [values, setValues] = useState(valoresIniciais);
 
-  function setValue(chave, valor) {
-    // chave: nome, descricao, bla, bli
-    setValues({
-      ...values,
-      [chave]: valor, // nome: 'valor'
-    });
-  }
-
-  function handleChange(infosDoEvento) {
-    setValue(
-      infosDoEvento.target.getAttribute('name'),
-      infosDoEvento.target.value,
-    );
-  }
-
-
-  useEffect( () => {
-    console.log("aaa");
+  useEffect(() => {
+    // console.log("aaa");
     const URL_TOP = window.location.hostname.includes('localhost')
       ? 'http://localhost:8080/categorias'
       : 'https://edsflix.herokuapp.com/categorias';
@@ -52,8 +41,8 @@ function CadastroCategoria() {
   return (
     <PageDefault>
       <h1>
-        Cadastro de Categoria: 
-        {values.nome}
+        Cadastro de Categoria
+        {/* {values.nome} */}
       </h1>
 
       <form onSubmit={function handleSubmit(infosDoEvento) {
@@ -63,7 +52,7 @@ function CadastroCategoria() {
           values,
         ]);
 
-        setValues(valoresIniciais);
+        clearForm();
       }}
       >
 
@@ -125,19 +114,19 @@ function CadastroCategoria() {
         </div>
       )}
 
-<ul>
-        {categorias.map((categoria, indice) => {
+      <ul>
+        {categorias.map((categoria) => {
           return (
-            <li key={`${categoria}${indice}`}>
+            <li key={`${categoria.titulo}`}>
               {categoria.titulo}
             </li>
           )
         })}
       </ul>
 
-      <Link to="/">
-        Ir para home
-      </Link>
+      <Button as={Link} to="/" className="batata">
+        Home
+        </Button>
     </PageDefault>
   );
 }

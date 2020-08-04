@@ -19,13 +19,13 @@ Label.Text = styled.span`
   height: 57px;
   position: absolute; 
   top: 0;
-  left: 16px;
+  left: 8px;
 
   display: flex;
   align-items: center;
 
   transform-origin: 0% 0%;
-  font-size: 18px;
+  font-size: 12px;
   font-style: normal;
   font-weight: 300;
 
@@ -38,7 +38,7 @@ const Input = styled.input`
   display: block;
   width: 100%;
   height: 57px;
-  font-size: 18px;
+  font-size: 15px;
 
   outline: 0;
   border: 0;
@@ -70,11 +70,14 @@ const Input = styled.input`
 `;
 
 function FormField({
-  label, type, name, value, onChange,
+  label, type, name, value, onChange, suggestions,
 }) {
   const fieldId = `id_${name}`;
   const isTextarea = type === 'textarea';
   const tag = isTextarea ? 'textarea' : 'input';
+
+  // const hasValue = Boolean(value.length);
+  const hasSuggestions = Boolean(suggestions.length);
 
   return (
     <FormFieldWrapper>
@@ -89,11 +92,26 @@ function FormField({
           value={value}
           name={name}
           onChange={onChange}
+          autoComplete={hasSuggestions ? 'off' : 'on'}
+          list={hasSuggestions ? `suggestionFor_${fieldId}` : undefined}
         />
 
         <Label.Text>
           {label}
         </Label.Text>
+        {
+          hasSuggestions && (
+            <datalist id={`suggestionFor_${fieldId}`}>
+              {
+                suggestions.map((suggestion) => (
+                  <option value={suggestion} key={`suggestionFor_${fieldId}_option${suggestion}`}>
+                    {suggestion}
+                  </option>
+                ))
+              }
+            </datalist>
+          )
+        }
 
       </Label>
     </FormFieldWrapper>
@@ -104,7 +122,8 @@ FormField.defaultProps = {
   type: 'text',
   value: '',
   onChange: () => { },
-}
+  suggestions: [],
+};
 
 FormField.propTypes = {
   label: PropTypes.string.isRequired,
@@ -112,6 +131,7 @@ FormField.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string,
   onChange: PropTypes.func,
+  suggestions: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default FormField;

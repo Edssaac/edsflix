@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 
 export const FooterBase = styled.footer`
+  line-height: 30px;
   background: var(--black);
   border-top: 2px solid var(--primary);
   padding-left: 16px;
@@ -13,4 +14,9 @@ export const FooterBase = styled.footer`
   @media (max-width: 800px) {
     margin-bottom: 50px;
   }
+  .nounderline {
+    text-decoration: none;
+    color: rgb(255,0,0);
+  }
+  
 `;

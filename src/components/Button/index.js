@@ -20,6 +20,7 @@ const Button = styled.button`
     &:focus {
     opacity: .5;
     }
+
 `;
 
 export default Button
