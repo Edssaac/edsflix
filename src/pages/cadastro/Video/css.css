@@ -1,4 +1,21 @@
 .batata {
     margin-right: 20px;
     margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.p1 {
+    /* color:red; */
+    font-size: 20px;
+    line-height: 26px;
+}
+
+.p2 {
+    list-style-type: square;
+
+    line-height: 25px;
+    border: 2px solid red;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    width: max-content;
 }

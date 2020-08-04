@@ -1,0 +1,41 @@
+body {
+    background-color: var(--black);
+}
+
+
+.batata h1 {
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    font-size: 40px;
+}
+.batata p {
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    font-size: 30px;
+}
+
+
+@media (max-width: 800px) {
+    .batata h1 {
+        font-size: 25px;
+    }
+    .batata p {
+        font-size: 18px;
+    }
+
+    .batata {
+        margin-top: 40%;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: rgb(255,0,0);
+}
+

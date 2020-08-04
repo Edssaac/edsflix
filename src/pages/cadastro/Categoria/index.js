@@ -114,10 +114,12 @@ function CadastroCategoria() {
         </div>
       )}
 
+      <p className="p1">Categorias Existentes:</p>
+
       <ul>
         {categorias.map((categoria) => {
           return (
-            <li key={`${categoria.titulo}`}>
+            <li key={`${categoria.titulo}`}  className="p2">
               {categoria.titulo}
             </li>
           )

@@ -46,6 +46,7 @@ ContentAreaContainer.Category = styled.h1`
 `;
 
 ContentAreaContainer.Description = styled.p`
+  line-height: 22px;
   @media (max-width: 800px) {
     display: none;
   }
@@ -101,7 +102,7 @@ export const BannerMainContainer = styled.section`
 `;
 
 export const WatchButton = styled.button`
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Press Start 2P', cursive;
   box-sizing: border-box;
   cursor: pointer;
   padding: 16px 24px;
@@ -109,7 +110,7 @@ export const WatchButton = styled.button`
   font-weight: bold;
   font-size: 16px;
   outline: none;
-  border-radius: 5px;
+  border-radius: 8px;
   text-decoration: none;
   display: inline-block;
   border: 1px solid transparent;
